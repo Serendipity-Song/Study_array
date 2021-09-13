@@ -1,4 +1,6 @@
 
+#include <iostream>
+using namespace std;
 
 //선택정렬. 가장 작은 것을 선택한다.
 
@@ -23,6 +25,6 @@ int main() {
 	}
 
 	for (int i = 0; i < len; i++) {
-		cout << array[j] << " ";
+		cout << array[i] << " ";
 	}
 }
