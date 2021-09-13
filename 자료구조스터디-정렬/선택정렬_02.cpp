@@ -17,7 +17,7 @@ int main() {
 
 	int max_index, temp;
 
-	for (int i = ¤½ 0; i < n; i++) {
+	for (int i = 0; i < n; i++) {
 		max_index = i;
 		for (int j = i + 1; j < n; j++) {
 			if (array[max_index] < array[j])
