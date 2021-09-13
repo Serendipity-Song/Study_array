@@ -4,36 +4,47 @@
 using namespace std;
 
 
+void quick_sort(int array[], int start, int end) {
+	if (start >= end) return;
 
-int main() {
+	int pivot = start;
+	int left = start + 1;
+	int right = end;
+	while (left <= right) {
+		while (left <= end && array[left] <= array[pivot]) {
+			left += 1;
+		}
 
-
-	int n, x;
-	cin >> n;
-	int* array = new int[n];
-
-
-	for (int i = 0; i < n; i++) {
-		cin >> x;
-		array[i] = x;
-	}
-
-
-	int max_index, temp;
-
-
-	for (int i = 0; i < n; i++) {
-		max_index = i;
-		for (int j = i + 1; j < n; j++) {
-			if (array[max_index] < array[j])
-				max_index = j;
+		while (right > start && array[right] >= array[pivot]) {
+			right -= 1;
+		}
+		if (left > right) {
+			int temp = array[right];
+			array[right] = array[pivot];
+			array[right] = temp;
+		}
+		else {
+			int temp = array[left];
+			array[left] = array[right];
+			array[right] = temp;
 		}
 	}
 
-	for (int i = 0; i < n; i++) {
+	quick_sort(array, start, right - 1);
+	quick_sort(array, right + 1, end);
+
+}
+
+
+int main() {
+	int array[] = { 7,5,9,0,3,1,6,2,4,8 };
+
+	int len = sizeof(array) / sizeof(array[0]);
+
+	quick_sort(array, 0, len - 1);
+
+	for (int i = 0; i < len; i++) {
 		cout << array[i] << " ";
 	}
-
-	delete[] array;
-
+	return 0;
 }
